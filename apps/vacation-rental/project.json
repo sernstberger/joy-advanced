@@ -1,0 +1,85 @@
+{
+  "name": "vacation-rental",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/vacation-rental/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/vacation-rental",
+        "index": "apps/vacation-rental/src/index.html",
+        "baseHref": "/",
+        "main": "apps/vacation-rental/src/main.tsx",
+        "polyfills": "apps/vacation-rental/src/polyfills.ts",
+        "tsConfig": "apps/vacation-rental/tsconfig.app.json",
+        "assets": [
+          "apps/vacation-rental/src/favicon.ico",
+          "apps/vacation-rental/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/vacation-rental/src/environments/environment.ts",
+              "with": "apps/vacation-rental/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "vacation-rental:build",
+        "hmr": true,
+        "proxyConfig": "apps/vacation-rental/proxy.conf.json"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "vacation-rental:build:development"
+        },
+        "production": {
+          "buildTarget": "vacation-rental:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/vacation-rental/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/vacation-rental"],
+      "options": {
+        "jestConfig": "apps/vacation-rental/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
