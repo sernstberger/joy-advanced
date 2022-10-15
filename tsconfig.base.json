@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@joy-advanced/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@joy-advanced/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@joy-advanced/components": ["libs/components/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

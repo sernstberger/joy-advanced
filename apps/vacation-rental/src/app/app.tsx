@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Message } from '@joy-advanced/api-interfaces';
+import { Components } from '@joy-advanced/components';
 
 export const App = () => {
   const [m, setMessage] = useState<Message>({ message: '' });
@@ -14,6 +15,7 @@ export const App = () => {
     <>
       <div style={{ textAlign: 'center' }}>
         <h1>Welcome to vacation-rental!</h1>
+        <Components />
         <img
           width="450"
           src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png"
