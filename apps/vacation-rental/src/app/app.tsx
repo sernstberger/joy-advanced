@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Message } from '@joy-advanced/api-interfaces';
-import { Components } from '@joy-advanced/components';
+import { ListingItem } from '@joy-advanced/components';
+import { Box } from '@mui/joy';
 
 export const App = () => {
   const [m, setMessage] = useState<Message>({ message: '' });
@@ -12,18 +13,16 @@ export const App = () => {
   }, []);
 
   return (
-    <>
-      <div style={{ textAlign: 'center' }}>
-        <h1>Welcome to vacation-rental!</h1>
-        <Components />
-        <img
-          width="450"
-          src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png"
-          alt="Nx - Smart, Fast and Extensible Build System"
-        />
-      </div>
-      <div>{m.message}</div>
-    </>
+    <Box sx={{ width: 400 }}>
+      <ListingItem
+        title="cool"
+        description="something"
+        image={{
+          src: 'https://images.unsplash.com/photo-1502657877623-f66bf489d236?auto=format&fit=crop&w=800',
+          alt: 'cool',
+        }}
+      />
+    </Box>
   );
 };
 

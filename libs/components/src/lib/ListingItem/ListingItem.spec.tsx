@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import Components from './Components';
+import ListingItem from './ListingItem';
 
-describe('Components', () => {
+describe('ListingItem', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Components />);
+    const { baseElement } = render(<ListingItem />);
     expect(baseElement).toBeTruthy();
   });
 });
