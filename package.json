@@ -30,7 +30,6 @@
     "@nrwl/node": "14.8.6",
     "@nrwl/nx-cloud": "latest",
     "@nrwl/react": "14.8.6",
-    "@nrwl/storybook": "^15.0.0",
     "@nrwl/web": "14.8.6",
     "@nrwl/workspace": "14.8.6",
     "@testing-library/react": "13.4.0",
