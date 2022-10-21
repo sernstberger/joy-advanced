@@ -1,33 +1,20 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { ListingItem } from './ListingItem';
+import { Carousel } from './Carousel';
 
 export default {
-  title: 'ListingItem',
-  component: ListingItem,
-} as ComponentMeta<typeof ListingItem>;
+  title: 'Carousel',
+  component: Carousel,
+} as ComponentMeta<typeof Carousel>;
 
-const Template: ComponentStory<typeof ListingItem> = ({ ...args }) => (
+const Template: ComponentStory<typeof Carousel> = ({ ...args }) => (
   <div style={{ width: 300 }}>
-    <ListingItem {...args} />
+    <Carousel {...args} />
   </div>
 );
 
-export const Single = Template.bind({});
-Single.args = {
-  title: 'cool',
-  description: 'something',
-  image: {
-    src: 'https://images.unsplash.com/photo-1502657877623-f66bf489d236?auto=format&fit=crop&w=800',
-    alt: 'cool',
-  },
-  startDecorator: <div>cool</div>,
-};
-
 export const Array = Template.bind({});
 Array.args = {
-  title: 'cool',
-  description: 'something',
-  image: [
+  images: [
     {
       src: 'https://images.unsplash.com/photo-1502657877623-f66bf489d236?auto=format&fit=crop&w=800',
       alt: 'cool',

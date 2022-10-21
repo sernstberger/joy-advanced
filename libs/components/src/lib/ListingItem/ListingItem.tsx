@@ -1,16 +1,12 @@
-import { AspectRatio, Link, Sheet, SheetProps, Typography } from '@mui/joy';
-
-export interface ImageProps {
-  src: string;
-  alt: string;
-}
+import { Link, Sheet, SheetProps, Stack, Typography } from '@mui/joy';
+import { Image, ImageProps } from '../Image';
 
 export interface ListingItemProps extends SheetProps {
-  // image: ImageProps | ImageProps[];
-  image: ImageProps;
+  image: ImageProps | ImageProps[];
   title: string;
-
   description?: string;
+  startDecorator?: React.ReactNode;
+  endDecorator?: React.ReactNode;
 }
 
 export function ListingItem({
@@ -18,23 +14,28 @@ export function ListingItem({
   image,
   title,
   variant,
+  startDecorator,
+  endDecorator,
 }: ListingItemProps) {
   return (
     <Sheet {...{ variant }}>
-      <AspectRatio>
-        <img
-          src={image.src}
-          // srcSet="https://images.unsplash.com/photo-1502657877623-f66bf489d236?auto=format&fit=crop&w=800&dpr=2 2x"
-          alt={image.alt}
-          loading="lazy"
-        />
-      </AspectRatio>
-      <Typography level="body1">
-        <Link href="#click" overlay underline="none">
-          {title}
-        </Link>
-      </Typography>
-      {description && <Typography level="body2">{description}</Typography>}
+      {Array.isArray(image) ? (
+        image.map(({ alt, src }: ImageProps) => <Image {...{ src, alt }} />)
+      ) : (
+        <Image src={image.src} alt={image.alt} />
+      )}
+      <Stack direction="row" spacing={1}>
+        {startDecorator && startDecorator}
+        <div>
+          <Typography level="body1">
+            <Link href="#click" overlay underline="none">
+              {title}
+            </Link>
+          </Typography>
+          {description && <Typography level="body2">{description}</Typography>}
+        </div>
+        {endDecorator && endDecorator}
+      </Stack>
     </Sheet>
   );
 }

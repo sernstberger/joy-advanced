@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react';
-import ListingItem from './ListingItem';
+import Carousel from './Carousel';
 
-describe('ListingItem', () => {
+describe('Carousel', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<ListingItem />);
+    const { baseElement } = render(<Carousel />);
     expect(baseElement).toBeTruthy();
   });
 });
